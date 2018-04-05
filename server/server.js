@@ -10,8 +10,8 @@ app.use(express.static('server/public'));
 
 app.use(bodyParser.json());
 
-app.use('/pet-hotel', ownerRouter);
-app.use('/pet-hotel', petRouter);
+app.use('/owner', ownerRouter);
+app.use('/pet', petRouter);
 
 app.listen(PORT, () => {
     console.log('Listening on port', PORT);
