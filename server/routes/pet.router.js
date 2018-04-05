@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
                     "pet"."checked_in" as "checked_in", "owner"."first_name" as "owner_name"  
                     FROM "pet" JOIN "owner" on "owner"."id" = "pet"."owner_id";`;
     pool.query(queryText).then(result => {
-        console.log('Success in  seclecting pets - GET /pet', result);
+        console.log('Success in  seclecting pets - GET /pet', result.rows);
         res.send(result.rows);
     }).catch(error => {
         console.log('ERROR SELECTING PET - GET /pet -', error);

@@ -1,1 +1,18 @@
 <h2>List of Pets</h2>
+
+<form ng-submit="vm.addPet(vm.newPet)">
+    <input type="text" placeholder="Name" ng-model="vm.newPet.name">
+    <input type="number" placeholder="Type" ng-model="vm.newPet.type">
+    <input type="number" placeholder="Breed" ng-model="vm.newPet.breed">
+    <input type="number" placeholder="Owner" ng-model="vm.newPet.owner_name">
+    <input type="submit">
+</form>
+
+<div class="pet" ng-repeat="pet in vm.petArray.list">
+    <h4>Name: {{pet.pet_name}}</h4>
+    <p>Type: {{pet.pet_type}}</p>
+    <p>Breed: {{pet.pet_breed}}</p>
+    <p>Owner: {{pet.owner_name}}</p>
+    <p>Checked In: {{pet.checked_in}}</p>
+    <!-- <md-button ng-click="vm.REMOVE FUNCTION($event, PET-ID)" class=" md-raised md-warn"> Delete -->
+</div>
