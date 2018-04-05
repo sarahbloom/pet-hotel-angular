@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-console.log('owner router working');
+// console.log('owner router working');
 
 router.get('/', (req, res) => {
     console.log('GET request owner'); 
     let queryText = `SELECT "owner"."first_name" as "owner_name", 
+                "owner"."email" as "email", 
                 count("pet") as "total_pets" FROM "owner" 
                 JOIN "pet" on "owner"."id" = "pet"."owner_id" 
-                GROUP BY "owner"."first_name";`;
+                GROUP BY "owner"."first_name", "owner"."email";`;
     pool.query(queryText)
     .then((result) => {
         console.log('Success in  seclecting owners - GET /pet', result.rows);

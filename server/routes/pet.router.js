@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-console.log('pet router working');
+// console.log('pet router working');
 
-
+//get pets currently in the database
 router.get('/', (req, res) => {
     console.log('GET request pet');
     let queryText = `SELECT "pet"."name" as "pet_name", 
@@ -20,6 +20,8 @@ router.get('/', (req, res) => {
     })
     
 })
+
+//post new pet to database
 
 
 module.exports = router;

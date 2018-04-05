@@ -7,4 +7,5 @@ PetHotelApp.controller('PetController', ['PetHotelService', function (PetHotelSe
 
     self.petArray = servicePetHotel.petArray;
     self.getPet = servicePetHotel.getPet;
+    self.addPet = servicePetHotel.addPet;
 }])
