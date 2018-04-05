@@ -1,1 +1,26 @@
 <h2>List of Owners</h2>
+
+<form ng-submit="vm.addOwner(vm.NewOwner)">
+    <input type="text" placeholder="Name" ng-model="vm.NewOwner.name">
+    <input type="submit">
+</form>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Pets</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="owner in vm.ownerArray.list">
+                <td>{{owner.owner_name}}</td>
+                <td>{{owner.total_pets}}</td>
+                <td><button disabled="disabled">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

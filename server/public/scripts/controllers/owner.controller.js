@@ -3,4 +3,8 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', function (PetHotel
 
     const self = this;
     
+    let serviceOwner = PetHotelService;
+
+    self.ownerArray = serviceOwner.ownerArray;
+    self.getOwner = serviceOwner.getOwner;
 }])
