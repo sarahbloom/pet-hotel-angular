@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
                 "owner"."email" as "email", 
                 "owner"."id" as "owner_id",
                 count("pet") as "total_pets" FROM "owner" 
-                JOIN "pet" on "owner"."id" = "pet"."owner_id" 
+                LEFT JOIN "pet" on "owner"."id" = "pet"."owner_id" 
                 GROUP BY "owner"."first_name", "owner"."email", "owner"."id" ORDER BY "owner"."first_name" ASC;`;
     pool.query(queryText)
     .then((result) => {
