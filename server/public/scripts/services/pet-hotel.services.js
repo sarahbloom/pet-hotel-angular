@@ -18,6 +18,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             self.ownerArray.list = response.data;
         }).catch ((err)=>{
             console.log('err GETTING /owner', err);
+            //alert to user something is wrong
         })
     }
 
@@ -28,7 +29,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             method:'GET', 
             url: '/pet'
         }).then((response) =>{
-            // console.log('GET /pet response', response.data);
+            console.log('POST /pet data', response.data);
             self.petArray.list = response.data;
         }).catch((err)=>{
             console.log('err GETTING /pet', err);
@@ -38,6 +39,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
     //add a new pet
     self.addPet = function(newPet) {
         console.log('clicked button to POST new /pet');
+        newPet.checked_in = true;
         $http({
             method: "POST",
             url: '/pet',

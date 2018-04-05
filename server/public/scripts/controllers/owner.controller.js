@@ -6,5 +6,7 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', function (PetHotel
     let serviceOwner = PetHotelService;
 
     self.ownerArray = serviceOwner.ownerArray;
+    self.petArray = serviceOwner.petArray;
+
     self.getOwner = serviceOwner.getOwner;
 }])

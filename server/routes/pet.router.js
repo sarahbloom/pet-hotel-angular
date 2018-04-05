@@ -22,6 +22,14 @@ router.get('/', (req, res) => {
 })
 
 //post new pet to database
-
+router.post('/', (req, res)=>{
+    console.log('POST received in /owner');
+    const newPet = req.body;
+    console.log('req.body in POST /pet:', newPet);
+    
+    // let queryText = `INSERT INTO "pet"("name", "type", "breed", "owner_id", "checked_in")
+    // VALUES($1, $2, $3, $4), $5;`;
+    // pool.query(queryText, [newPet.name, newPet.type, newPet.breed, newPet.owner_id, newPet.checked_in ])
+})
 
 module.exports = router;

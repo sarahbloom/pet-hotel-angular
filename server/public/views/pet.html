@@ -5,17 +5,25 @@
     <input type="text" placeholder="Name" ng-model="vm.newPet.name">
     <input type="text" placeholder="Type" ng-model="vm.newPet.type">
     <input type="text" placeholder="Breed" ng-model="vm.newPet.breed">
-    <input type="text" placeholder="Owner" ng-model="vm.newPet.owner_name">
+    <!-- <input type="text" placeholder="Owner" ng-model="vm.newPet.owner_name"> -->
+    <select ng-model="vm.newPet.owner_id">
+        <option value="">---Please select---</option>
+        <!-- list owner names in database -->
+        <option ng-repeat="owner in vm.ownerArray.list" value="{{owner.owner_id}}">{{owner.owner_name}}</option>
+    </select>
+<!-- ng-options works for options -->
     <input type="submit">
 </form>
+
 <br>
-<div class="pet" ng-repeat="pet in vm.petArray.list">
-    <h4>Name: {{pet.pet_name}}</h4>
-    <p>Type: {{pet.pet_type}}</p>
-    <p>Breed: {{pet.pet_breed}}</p>
-    <p>Owner: {{pet.owner_name}}</p>
-    <p>Checked In: {{pet.checked_in}}</p>
-    <button>Check In</button>
-    <button>Delete</button>
-    <!-- <md-button ng-click="vm.REMOVE FUNCTION($event, PET-ID)" class=" md-raised md-warn"> Delete -->
+<div layout = "row">
+    <div class="pet" ng-repeat="pet in vm.petArray.list">
+        <h4>Name: {{pet.pet_name}}</h4>
+        <p>Type: {{pet.pet_type}}</p>
+        <p>Breed: {{pet.pet_breed}}</p>
+        <p>Owner: {{pet.owner_name}}</p>
+        <p>Checked In: {{pet.checked_in}}</p>
+        <button>Check In</button>
+        <button>Delete</button>
+    </div>
 </div>

@@ -8,9 +8,10 @@ router.get('/', (req, res) => {
     console.log('GET request owner'); 
     let queryText = `SELECT "owner"."first_name" as "owner_name", 
                 "owner"."email" as "email", 
+                "owner"."id" as "owner_id",
                 count("pet") as "total_pets" FROM "owner" 
                 JOIN "pet" on "owner"."id" = "pet"."owner_id" 
-                GROUP BY "owner"."first_name", "owner"."email";`;
+                GROUP BY "owner"."first_name", "owner"."email", "owner"."id";`;
     pool.query(queryText)
     .then((result) => {
         console.log('Success in  seclecting owners - GET /pet', result.rows);
