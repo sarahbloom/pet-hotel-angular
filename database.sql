@@ -14,7 +14,6 @@ CREATE TABLE "pet" (
 CREATE TABLE "owner" (
 	"id" SERIAL PRIMARY KEY,
 	"first_name" VARCHAR(25),
-	"last_name" VARCHAR(25),
 	"email" VARCHAR(60)
 );
 
@@ -24,8 +23,8 @@ VALUES ('May', 'chicken', 'Plymouth', FALSE, 3),
 ('Emmy', 'turtle', 'painted', FALSE, 4),
 ('Timmy', 'turtle', 'mapped', FALSE, 4);
 
-INSERT INTO "owner" ("first_name", "last_name", "email")
-VALUES ('Jack', 'Harkness', 'JH@aol.com'),
-('Amy', 'Pond', 'pond@mac.com'),
-('Martha', 'Jones', 'dr@hotmail.com'),
-('Sarah Jane', 'Smith', 'sjs@yahoo.com');
+INSERT INTO "owner" ("first_name", "email")
+VALUES ('Jack', 'JH@aol.com'),
+('Amy', 'pond@mac.com'),
+('Martha', 'dr@hotmail.com'),
+('Sarah Jane','sjs@yahoo.com');

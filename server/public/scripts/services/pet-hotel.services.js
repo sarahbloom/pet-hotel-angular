@@ -7,6 +7,21 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
     self.petArray = { list: [] };
     self.ownerArray = { list: [] };
 
+    //add a new owner
+    self.addOwner = function (NewOwner){
+        console.log('clicked to add new owner');
+        $http({
+            method: "POST",
+            url:'/owner',
+            data: NewOwner
+        }).then((response)=>{
+            console.log('POST /owner response', response);
+            self.getOwner();
+        }).catch((err) => {
+            console.log('error making POST /pet request', err);
+        })
+    }
+
     //get request - get owners and post to DOM
     self.getOwner = function () {
         console.log('in GET /owner');
@@ -38,14 +53,13 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
 
     //add a new pet
     self.addPet = function(newPet) {
-        console.log('clicked button to POST new /pet');
         newPet.checked_in = true;
         $http({
             method: "POST",
             url: '/pet',
             data: newPet
         }).then((response)=> {
-            console.log('POST /pet response', response);
+            // console.log('POST /pet response', response);
             self.getPet();
             self.getOwner();
         }).catch((err) => {
