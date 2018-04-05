@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular Pet Hotel</title>
+    <link rel="stylesheet" href="styles/angular-material.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.js"></script>
+
+    <script src="vendors/angular-animate.min.js"></script>
+    <script src="vendors/angular-aria.min.js"></script>
+    <script src="vendors/angular-messages.min.js"></script>
+    <script src="vendors/angular-material.min.js"></script>
+
+    <script src="scripts/client.js"></script>
+    <script src="scripts/services/pet-hotel.services.js"></script>
+    <script src="scripts/controllers/owner.controller.js"></script>
+    <script src="scripts/controllers/pet.controller.js"></script>
+    
+</head>
+
+<body ng-app="PetHotelApp">
+    <h2>Angular Pet Hotel</h2>
+
+        <div ng-include=" '/views/templates/nav.html' "></div>
+            <main ng-view>
+                <!-- HTML GOES HERE -->
+            </main>
+        </div>
+
+</body>
+</html>
