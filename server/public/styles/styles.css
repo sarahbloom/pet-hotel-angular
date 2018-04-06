@@ -6,10 +6,17 @@ body, html{
     font-family: 'Bree Serif', serif;
 }
 
-form, h1, h2, #nav {
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
 }
 
+form, h1, h2, #nav {
+    text-align: center;
+}
 
 table, tr{
      margin: auto;
@@ -41,7 +48,7 @@ tr:nth-child(even) {
 }
 
 .pet{
-    height: 315px;
+    height: 350px;
     width: 200px;
     margin: 15px;
     text-align: center;
