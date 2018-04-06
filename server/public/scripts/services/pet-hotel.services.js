@@ -22,6 +22,23 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
         })
     }
 
+    //delete request /OWNER
+    self.deleteOwner = function (ownerId){
+        console.log('clicked DELETE /owner');
+        $http({
+            method:"DELETE", 
+            url: `/owner/${ownerId}`
+        }).then((response) => {
+            console.log(response);
+            
+            self.getPet();
+            self.getOwner();
+            alert('Owner is deleted from the records');
+        }).catch((err) => {
+            console.log('Error deleting owner from records', err);
+        })
+    }
+
     //get request /OWNER - get owners and post to DOM
     self.getOwner = function () {
         console.log('in GET /owner');
@@ -29,13 +46,14 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             method: 'GET',
             url: '/owner'
         }).then((response) =>{
-            console.log('GET /owner response', response.data);
+            // console.log('GET /owner response', response.data);
             self.ownerArray.list = response.data;
         }).catch ((err)=>{
             console.log('err GETTING /owner', err);
             //alert to user something is wrong
         })
     }
+
 
     //get request /PET = get all pets in database and post to DOM
     self.getPet = function(){
@@ -44,7 +62,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             method:'GET', 
             url: '/pet'
         }).then((response) =>{
-            console.log('POST /pet data', response.data);
+            // console.log('POST /pet data', response.data);
             self.petArray.list = response.data;
         }).catch((err)=>{
             console.log('err GETTING /pet', err);
@@ -53,7 +71,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
 
     //delete request /PET
     self.deletePet = function(petId){
-        console.log('clicked delete /pet');
+        console.log('clicked DELETE /pet');
         $http({
             method: 'DELETE',
             url: `/pet/${petId}`

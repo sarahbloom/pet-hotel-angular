@@ -10,4 +10,5 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', function (PetHotel
 
     self.getOwner = serviceOwner.getOwner;
     self.addOwner = serviceOwner.addOwner;
+    self.deleteOwner = serviceOwner.deleteOwner;
 }])

@@ -19,13 +19,13 @@ router.delete('/:id', (req, res)=>{
 
 //get pets currently in the database
 router.get('/', (req, res) => {
-    console.log('GET request pet');
+    console.log('GET request /pet');
     let queryText = `SELECT "pet"."name" as "pet_name", 
                     "pet"."type" as "pet_type", "pet"."breed" as "pet_breed", 
                     "pet"."checked_in" as "checked_in", "pet"."id" as "id", "owner"."first_name" as "owner_name"  
                     FROM "pet" JOIN "owner" on "owner"."id" = "pet"."owner_id" ORDER BY "pet"."breed" ASC;`;
     pool.query(queryText).then(result => {
-        console.log('Success in  seclecting pets - GET /pet', result.rows);
+        // console.log('Success in  seclecting pets - GET /pet', result.rows);
         res.send(result.rows);
     }).catch(error => {
         console.log('ERROR SELECTING PET - GET /pet -', error);

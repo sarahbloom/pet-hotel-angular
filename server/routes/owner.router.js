@@ -21,11 +21,25 @@ router.get('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res)=>{
+    console.log('DELETE /owner:', req.params );
+    const ownerId = req.params.id;
+
+    let queryText = `DELETE FROM "owner" WHERE "id"=$1;`;
+    pool.query(queryText, [ownerId])
+    .then((result) => {
+         res.sendStatus(200);
+    }).catch((err) => {
+        console.log('error DELETING /owner:', err);
+        res.sendStatus(500);
+    })
+})
+
 //add new owner to DB
 router.post('/', (req, res) => {
     console.log('POST received in /owner');
     const newOwner = req.body;
-    console.log('New Owner is:', newOwner);
+    // console.log('New Owner is:', newOwner);
     let queryText = `INSERT INTO "owner"("first_name", "email") VALUES($1, $2);`;
     pool.query(queryText, [newOwner.name, newOwner.email])
     .then((result) => {
