@@ -22,7 +22,7 @@
         <p>Type: {{pet.pet_type}}</p>
         <p>Breed: {{pet.pet_breed}}</p>
         <p>Owner: {{pet.owner_name}}</p>
-        <p>Checked In: {{pet.checked_in}}</p>
+        <p>Checked In: {{elem.pet.checked_in?'Yes':'No'}}</p>
         <button>Check In</button>
         <button ng-click="vm.deletePet(pet.id)">Delete</button>
     </div>
