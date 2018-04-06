@@ -53,15 +53,23 @@ router.post('/', (req, res)=>{
 router.put('/:id', (req, res)=> {
     let petId = req.params.id;
     let pet = req.body;
+    let check = req.query.status;
+    let queryText = " "
     console.log('checking in pet', pet);
     console.log('Pet ID', petId);
-    let queryText = `UPDATE "pet" SET "checked_in" = TRUE WHERE "id" = $1;`;
+    console.log(check);
+    
+    if (check == 'checkIn'){
+        queryText = `UPDATE "pet" SET "checked_in" = TRUE WHERE "id" = $1;`;
+    } else {
+        queryText = `UPDATE "pet" SET "checked_in" = FALSE WHERE "id" = $1;`;
+    }
     pool.query(queryText, [petId])
         .then((response) => {
-            // console.log('/PET checked in', response);
+            console.log('/PET check-in status updated', response);
             res.sendStatus(201);
         }).catch((error) => {
-            console.log('ERROR ON UPDATE', error);
+            console.log('ERROR ON UPDATE /PET status', error);
             res.send(500);
     })
 })

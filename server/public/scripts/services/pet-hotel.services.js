@@ -73,15 +73,17 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
     }
 
     //check in pet
-    self.checkInPet = function (pet, petId){
-        console.log('in check in /pet');
-        pet.checked_in = true;
+    self.checkInPet = function (pet, petId, status){
+        console.log('clicked check in/out /PET');
+        // pet.checked_in = !pet.checked_in;
         console.log(pet.checked_in);
         $http({
             method: 'PUT',
             url: `/pet/${petId}`,
-            data: pet
+            data: pet,
+            params: { status: status}
         }).then((response) => {
+            console.log(pet);
             self.getPet();
             self.getOwner();
         }).catch((err) =>{
