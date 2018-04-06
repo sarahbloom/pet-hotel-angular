@@ -22,7 +22,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
         })
     }
 
-    //get request - get owners and post to DOM
+    //get request /OWNER - get owners and post to DOM
     self.getOwner = function () {
         console.log('in GET /owner');
         $http({
@@ -37,7 +37,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
         })
     }
 
-    //get request /PET get all pets in database and post to DOM
+    //get request /PET = get all pets in database and post to DOM
     self.getPet = function(){
         // console.log('in GET /pet');
         $http({
@@ -48,6 +48,21 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             self.petArray.list = response.data;
         }).catch((err)=>{
             console.log('err GETTING /pet', err);
+        })
+    }
+
+    //delete request /PET
+    self.deletePet = function(petId){
+        console.log('clicked delete /pet');
+        $http({
+            method: 'DELETE',
+            url: `/pet/${petId}`
+        }).then((response)=>{
+            self.getPet();
+            self.getOwner();
+            alert('Pet is deleted from the records');
+        }).catch((err)=>{
+            console.log('Error deleting pet from records', err);
         })
     }
 

@@ -3,3 +3,19 @@ body{
     margin: 0;
     padding: 0;
 }
+
+form{
+    text-align: center;
+}
+
+table, tr{
+     margin: auto;
+     width: 50%;
+     border: 1px solid black;
+     border-collapse: collapse;
+     text-align: center;
+}
+
+.pet{
+    margin: 15px;
+}

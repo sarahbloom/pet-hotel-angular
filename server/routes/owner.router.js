@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
                 GROUP BY "owner"."first_name", "owner"."email", "owner"."id" ORDER BY "owner"."first_name" ASC;`;
     pool.query(queryText)
     .then((result) => {
-        console.log('Success in  seclecting owners - GET /owner', result.rows);
+        // console.log('Success in  seclecting owners - GET /owner', result.rows);
         res.send(result.rows);
     }).catch((error) => {
         console.log('ERROR IN GETTING OWNERS:', error);

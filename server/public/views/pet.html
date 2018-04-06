@@ -16,7 +16,7 @@
 </form>
 
 <br>
-<div layout = "row">
+<div layout = "row" class="boxes">
     <div class="pet" ng-repeat="pet in vm.petArray.list">
         <h4>Name: {{pet.pet_name}}</h4>
         <p>Type: {{pet.pet_type}}</p>
@@ -24,6 +24,6 @@
         <p>Owner: {{pet.owner_name}}</p>
         <p>Checked In: {{pet.checked_in}}</p>
         <button>Check In</button>
-        <button>Delete</button>
+        <button ng-click="vm.deletePet(pet.id)">Delete</button>
     </div>
 </div>
