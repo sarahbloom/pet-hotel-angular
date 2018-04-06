@@ -5,10 +5,11 @@ PetHotelApp.controller('PetController', ['PetHotelService', function (PetHotelSe
 
     let servicePetHotel = PetHotelService;
 
-    self.petArray = servicePetHotel.petArray;
     self.ownerArray = servicePetHotel.ownerArray
+    self.petArray = servicePetHotel.petArray;
 
-    self.getPet = servicePetHotel.getPet;
     self.addPet = servicePetHotel.addPet;
+    self.checkInPet = servicePetHotel.checkInPet;
     self.deletePet = servicePetHotel.deletePet;
+    self.getPet = servicePetHotel.getPet;
 }])

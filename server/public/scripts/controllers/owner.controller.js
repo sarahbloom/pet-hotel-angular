@@ -8,7 +8,7 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', function (PetHotel
     self.ownerArray = serviceOwner.ownerArray;
     self.petArray = serviceOwner.petArray;
 
-    self.getOwner = serviceOwner.getOwner;
     self.addOwner = serviceOwner.addOwner;
     self.deleteOwner = serviceOwner.deleteOwner;
+    self.getOwner = serviceOwner.getOwner;
 }])

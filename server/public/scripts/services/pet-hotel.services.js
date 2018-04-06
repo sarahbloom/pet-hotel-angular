@@ -55,19 +55,41 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
     }
 
 
-    //get request /PET = get all pets in database and post to DOM
-    self.getPet = function(){
-        // console.log('in GET /pet');
+
+    //add a new pet
+    self.addPet = function (newPet) {
+        newPet.checked_in = true;
         $http({
-            method:'GET', 
-            url: '/pet'
-        }).then((response) =>{
-            // console.log('POST /pet data', response.data);
-            self.petArray.list = response.data;
-        }).catch((err)=>{
-            console.log('err GETTING /pet', err);
+            method: "POST",
+            url: '/pet',
+            data: newPet
+        }).then((response) => {
+            // console.log('POST /pet response', response);
+            self.getPet();
+            self.getOwner();
+        }).catch((err) => {
+            console.log('error making POST /pet request', err);
         })
     }
+
+    //check in pet
+    self.checkInPet = function (pet, petId){
+        console.log('in check in /pet');
+        pet.checked_in = true;
+        console.log(pet.checked_in);
+        $http({
+            method: 'PUT',
+            url: `/pet/${petId}`,
+            data: pet
+        }).then((response) => {
+            self.getPet();
+            self.getOwner();
+        }).catch((err) =>{
+            console.log('error in checking in', err);
+            alert('Error in checking in pet!')
+        })
+    }
+
 
     //delete request /PET
     self.deletePet = function(petId){
@@ -84,21 +106,21 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
         })
     }
 
-    //add a new pet
-    self.addPet = function(newPet) {
-        newPet.checked_in = true;
+    //get request /PET = get all pets in database and post to DOM
+    self.getPet = function () {
+        // console.log('in GET /pet');
         $http({
-            method: "POST",
-            url: '/pet',
-            data: newPet
-        }).then((response)=> {
-            // console.log('POST /pet response', response);
-            self.getPet();
-            self.getOwner();
+            method: 'GET',
+            url: '/pet'
+        }).then((response) => {
+            // console.log('POST /pet data', response.data);
+            self.petArray.list = response.data;
         }).catch((err) => {
-            console.log('error making POST /pet request', err);
+            console.log('err GETTING /pet', err);
         })
     }
+
+    
 
     self.getPet();
     self.getOwner();

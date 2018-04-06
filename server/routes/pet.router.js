@@ -6,7 +6,7 @@ const pool = require('../modules/pool.js');
 
 router.delete('/:id', (req, res)=>{
     console.log('DELETE /pet');
-    const petId = req.params.id;
+    let petId = req.params.id;
     let queryText = `DELETE FROM "pet" WHERE "id"=$1;`;
     pool.query(queryText, [petId])
     .then((result)=>{
@@ -49,5 +49,22 @@ router.post('/', (req, res)=>{
         res.sendStatus(500);
     })
 })
+
+router.put('/:id', (req, res)=> {
+    let petId = req.params.id;
+    let pet = req.body;
+    console.log('checking in pet', pet);
+    console.log('Pet ID', petId);
+    let queryText = `UPDATE "pet" SET "checked_in" = TRUE WHERE "id" = $1;`;
+    pool.query(queryText, [petId])
+        .then((response) => {
+            // console.log('/PET checked in', response);
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('ERROR ON UPDATE', error);
+            res.send(500);
+    })
+})
+
 
 module.exports = router;
