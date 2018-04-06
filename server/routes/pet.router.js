@@ -55,10 +55,6 @@ router.put('/:id', (req, res)=> {
     let pet = req.body;
     let check = req.query.status;
     let queryText = " "
-    console.log('checking in pet', pet);
-    console.log('Pet ID', petId);
-    console.log(check);
-    
     if (check == 'checkIn'){
         queryText = `UPDATE "pet" SET "checked_in" = TRUE WHERE "id" = $1;`;
     } else {

@@ -22,8 +22,9 @@
         <p>Breed: {{pet.pet_breed}}</p>
         <p>Owner: {{pet.owner_name}}</p>
         <p>Checked In: {{pet.checked_in?'Yes':'No'}}</p>
-        <button ng-click="vm.checkInPet(pet, pet.id, 'checkIn')">Check In</button>
-        <button ng-click="vm.checkInPet(pet, pet.id, 'checkOut')">Check Out</button>
+        <button ng-click="vm.checkInPet(pet, pet.id, 'checkIn')" ng-show="!pet.checked_in">Check In</button>
+        <button ng-click="vm.checkInPet(pet, pet.id, 'checkOut')" ng-show="pet.checked_in">Check Out</button>
+        <br>
         <button ng-click="vm.deletePet(pet.id)">Delete</button>
     </div>
 </div>

@@ -16,6 +16,11 @@ table, tr{
      text-align: center;
 }
 
+.boxes {
+    align: center
+}
+
 .pet{
     margin: 15px;
+    text-align: center;
 }
