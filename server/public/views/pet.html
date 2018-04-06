@@ -21,7 +21,7 @@
         <p>Type: {{pet.pet_type}}</p>
         <p>Breed: {{pet.pet_breed}}</p>
         <p>Owner: {{pet.owner_name}}</p>
-        <p ng-show="pet.checked_in" type="datetime-local">Check In: {{pet.date | date: 'MMMM dd, yyyy'}}</p>
+        <p ng-show="pet.checked_in" type="datetime-local">Check In: {{pet.date | date: 'MMM dd, yyyy'}}</p>
         <br>
         <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkIn', $event)" ng-show="!pet.checked_in" 
                 class="md-raised md-primary">Check In</md-button>
