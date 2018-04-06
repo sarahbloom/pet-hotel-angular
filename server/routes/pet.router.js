@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
     let queryText = `SELECT "pet"."name" as "pet_name", 
                     "pet"."type" as "pet_type", "pet"."breed" as "pet_breed", 
                     "pet"."checked_in" as "checked_in", "pet"."id" as "id", "owner"."first_name" as "owner_name"  
-                    FROM "pet" JOIN "owner" on "owner"."id" = "pet"."owner_id" ORDER BY "pet"."breed" ASC;`;
+                    FROM "pet" JOIN "owner" on "owner"."id" = "pet"."owner_id" ORDER BY "pet"."type" ASC;`;
     pool.query(queryText).then(result => {
         // console.log('Success in  seclecting pets - GET /pet', result.rows);
         res.send(result.rows);

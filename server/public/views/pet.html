@@ -1,5 +1,5 @@
 <h2>List of Pets</h2>
-
+<br>
 
 <form ng-submit="vm.addPet(vm.newPet)">
     <input type="text" placeholder="Name" ng-model="vm.newPet.name">
@@ -22,9 +22,12 @@
         <p>Breed: {{pet.pet_breed}}</p>
         <p>Owner: {{pet.owner_name}}</p>
         <p>Checked In: {{pet.checked_in?'Yes':'No'}}</p>
-        <button ng-click="vm.checkInPet(pet, pet.id, 'checkIn')" ng-show="!pet.checked_in">Check In</button>
-        <button ng-click="vm.checkInPet(pet, pet.id, 'checkOut')" ng-show="pet.checked_in">Check Out</button>
         <br>
-        <button ng-click="vm.deletePet(pet.id)">Delete</button>
+        <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkIn')" ng-show="!pet.checked_in" 
+                class="md-raised md-primary">Check In</md-button>
+        <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkOut')" ng-show="pet.checked_in" 
+                class="md-raised md-primary">Check Out</md-button>
+        <br>
+        <md-button ng-click="vm.deletePet(pet.id)" class="md-raised md-warn">Delete</md-button>
     </div>
 </div>

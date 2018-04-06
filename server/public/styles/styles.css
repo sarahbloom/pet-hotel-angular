@@ -4,9 +4,10 @@ body{
     padding: 0;
 }
 
-form{
+form, h1, h2, #nav {
     text-align: center;
 }
+
 
 table, tr{
      margin: auto;
@@ -17,10 +18,14 @@ table, tr{
 }
 
 .boxes {
-    align: center
+     width: 100%;
+     margin: 0 auto;
 }
 
 .pet{
+    height: 300px;
+    width: 300px;
     margin: 15px;
     text-align: center;
+    
 }
