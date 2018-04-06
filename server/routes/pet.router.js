@@ -22,7 +22,8 @@ router.get('/', (req, res) => {
     console.log('GET request /pet');
     let queryText = `SELECT "pet"."name" as "pet_name", 
                     "pet"."type" as "pet_type", "pet"."breed" as "pet_breed", 
-                    "pet"."checked_in" as "checked_in", "pet"."id" as "id", "owner"."first_name" as "owner_name"  
+                    "pet"."checked_in" as "checked_in", "pet"."id" as "id", 
+                    "pet"."check_in_date" as "date", "owner"."first_name" as "owner_name"  
                     FROM "pet" JOIN "owner" on "owner"."id" = "pet"."owner_id" ORDER BY "pet"."type" ASC;`;
     pool.query(queryText).then(result => {
         // console.log('Success in  seclecting pets - GET /pet', result.rows);
@@ -54,7 +55,7 @@ router.put('/:id', (req, res)=> {
     let petId = req.params.id;
     let pet = req.body;
     let check = req.query.status;
-    let queryText = " "
+    let queryText = " ";
     if (check == 'checkIn'){
         queryText = `UPDATE "pet" SET "checked_in" = TRUE WHERE "id" = $1;`;
     } else {
@@ -62,7 +63,7 @@ router.put('/:id', (req, res)=> {
     }
     pool.query(queryText, [petId])
         .then((response) => {
-            console.log('/PET check-in status updated', response);
+            // console.log('/PET check-in status updated', response);
             res.sendStatus(201);
         }).catch((error) => {
             console.log('ERROR ON UPDATE /PET status', error);

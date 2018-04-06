@@ -1,7 +1,8 @@
-PetHotelApp.service('PetHotelService', ['$http', function ($http){
+PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $mdDialog){
     // console.log('Pet Hotel Service is loaded');
 
     const self = this;  
+    self.date = new Date();
 
     // A pet is paired with an owner by Owner ID
     self.petArray = { list: [] };
@@ -23,17 +24,23 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
     }
 
     //delete request /OWNER
-    self.deleteOwner = function (ownerId){
+    self.deleteOwner = function (ev, ownerId){
         console.log('clicked DELETE /owner');
         $http({
             method:"DELETE", 
             url: `/owner/${ownerId}`
         }).then((response) => {
             console.log(response);
-            
             self.getPet();
             self.getOwner();
-            alert('Owner is deleted from the records');
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('You have deleted this pet owner from the records.')
+                    .ok('Got it!')
+                    .targetEvent(ev)
+            );
         }).catch((err) => {
             console.log('Error deleting owner from records', err);
         })
@@ -54,8 +61,6 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
         })
     }
 
-
-
     //add a new pet
     self.addPet = function (newPet) {
         newPet.checked_in = true;
@@ -73,7 +78,7 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
     }
 
     //check in pet
-    self.checkInPet = function (pet, petId, status){
+    self.checkInPet = function (pet, petId, status, ev){
         console.log('clicked check in/out /PET');
         $http({
             method: 'PUT',
@@ -86,24 +91,54 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             self.getOwner();
         }).catch((err) =>{
             console.log('error in checking in', err);
-            alert('Error in checking in pet!')
+            // alert('Error in checking in pet!')
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Error in checking in pet!')
+                    .ok('Got it!')
+                    .targetEvent(ev)
+            );
         })
     }
 
-
     //delete request /PET
-    self.deletePet = function(petId){
+    self.deletePet = function(ev, petId){
         console.log('clicked DELETE /pet');
-        $http({
-            method: 'DELETE',
-            url: `/pet/${petId}`
-        }).then((response)=>{
-            self.getPet();
-            self.getOwner();
-            alert('Pet is deleted from the records');
-        }).catch((err)=>{
-            console.log('Error deleting pet from records', err);
-        })
+
+        let confirm = $mdDialog.confirm()
+            .title('Would you like to remove this pet from the records?')
+            .textContent('This pet cannot be re-added to the records.')
+            .ariaLabel('Remove the Pet.')
+            .targetEvent(ev)
+            .ok('Yes, delete.')
+            .cancel('No, keep the pet.');
+
+            $mdDialog.show(confirm).then(function () {
+                console.log('you deleted this pet');
+                $http({
+                    method: 'DELETE',
+                    url: `/pet/${petId}`
+                }).then((response) => {
+                    self.getPet();
+                    self.getOwner();
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .parent(angular.element(document.querySelector('#popupContainer')))
+                                .clickOutsideToClose(true)
+                                .title('You have deleted the pet from the records.')
+                                // .ariaLabel('Pet is deleted.')
+                                .ok('Got it!')
+                                .targetEvent(ev)
+                        );
+                }).catch((err) => {
+                    console.log('Error deleting pet from records', err);
+                })
+            }, function () {
+                console.log('you kept the pet');  
+            });
+        
     }
 
     //get request /PET = get all pets in database and post to DOM
@@ -119,8 +154,6 @@ PetHotelApp.service('PetHotelService', ['$http', function ($http){
             console.log('err GETTING /pet', err);
         })
     }
-
-    
 
     self.getPet();
     self.getOwner();

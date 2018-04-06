@@ -17,6 +17,14 @@ table, tr{
      text-align: center;
 }
 
+th{
+    background-color: rgb(90, 156, 131);
+}
+
+tr:nth-child(even) {
+    background-color: rgb(99, 189, 154);
+}
+
 .boxes {
      width: 100%;
      margin: 0 auto;

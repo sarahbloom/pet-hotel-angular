@@ -22,7 +22,7 @@
                 <td>{{owner.owner_name}}</td>
                 <td>{{owner.email}}</td>
                 <td>{{owner.total_pets}}</td>
-                <td><md-button ng-click="vm.deleteOwner(owner.owner_id)" class=" md-raised md-warn">Delete</td>
+                <td><md-button ng-click="vm.deleteOwner($event, owner.owner_id)" class=" md-raised md-warn">Delete</td>
             </tr>
         </tbody>
     </table>

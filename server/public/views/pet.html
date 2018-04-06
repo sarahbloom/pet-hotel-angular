@@ -21,13 +21,13 @@
         <p>Type: {{pet.pet_type}}</p>
         <p>Breed: {{pet.pet_breed}}</p>
         <p>Owner: {{pet.owner_name}}</p>
-        <p>Checked In: {{pet.checked_in?'Yes':'No'}}</p>
+        <p>Checked In: {{pet.checked_in? 'Yes':'No'}}</p>
         <br>
-        <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkIn')" ng-show="!pet.checked_in" 
+        <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkIn', $event)" ng-show="!pet.checked_in" 
                 class="md-raised md-primary">Check In</md-button>
-        <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkOut')" ng-show="pet.checked_in" 
+        <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkOut', $event)" ng-show="pet.checked_in" 
                 class="md-raised md-primary">Check Out</md-button>
         <br>
-        <md-button ng-click="vm.deletePet(pet.id)" class="md-raised md-warn">Delete</md-button>
+        <md-button ng-click="vm.deletePet($event, pet.id)" class="md-raised md-warn">Delete</md-button>
     </div>
 </div>
