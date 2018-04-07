@@ -24,7 +24,6 @@ router.get('/', (req, res) => {
 router.delete('/:id', (req, res)=>{
     console.log('DELETE /owner:', req.params );
     const ownerId = req.params.id;
-
     let queryText = `DELETE FROM "owner" WHERE "id"=$1;`;
     pool.query(queryText, [ownerId])
     .then((result) => {
