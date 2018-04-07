@@ -25,26 +25,27 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
 
     //delete request /OWNER
     self.deleteOwner = function (ev, ownerId){
-        console.log('clicked DELETE /owner');
-        $http({
-            method:"DELETE", 
-            url: `/owner/${ownerId}`
-        }).then((response) => {
-            console.log(response);
-            self.getPet();
-            self.getOwner();
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('You have deleted this pet owner from the records.')
-                    .ok('Got it!')
-                    .targetEvent(ev)
-            );
-        }).catch((err) => {
-            console.log('Error deleting owner from records', err);
-        })
-    }
+        console.log('clicked DELETE /owner', ownerId);
+            $http({
+                method:"DELETE", 
+                url: `/owner/${ownerId}`
+            }).then((response) => {
+                console.log(response);
+                self.getPet();
+                self.getOwner();
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('You have deleted this pet owner from the records.')
+                        .ok('Got it!')
+                        .targetEvent(ev)
+                );
+            }).catch((err) => {
+                console.log('Error deleting owner from records', err);
+            })
+        }
+    
 
     //get request /OWNER - get owners and post to DOM
     self.getOwner = function () {
@@ -59,6 +60,20 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
             console.log('err GETTING /owner', err);
             //alert to user something is wrong
         })
+    }
+
+    self.updateOwner = function (owner, ownerId){
+        console.log('clicked UPDATE /owner');
+        // $http({
+        //     method:"PUT", 
+        //     url: `/owner/${ownerId}`,
+        //     data: owner
+        // }).then((response) =>{
+        //     console.log('UPDATE /owner', response);
+        //     self.getCrew();
+        // }).catch((err)=>{
+        //     console.log('err UPDATING /owner', err);
+        // })
     }
 
     //add a new pet
