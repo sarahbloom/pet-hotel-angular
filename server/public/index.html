@@ -27,9 +27,10 @@
 
 <body ng-app="PetHotelApp" >
     <div>
-        <h1>Angular Pet Hotel</h2>
-
-        <div id = "nav" ng-include=" '/views/templates/nav.html' "></div>
+        <md-toolbar id="menu" class="md-menu-toolbar">
+            <h1 md-toolbar class="md-menu-toolbar">Angular Pet Hotel</h2>
+            <div  md-toolbar class="md-menu-toolbar" id="nav" ng-include=" '/views/templates/nav.html' "></div>
+        </md-toolbar>
             <main ng-view>
                 <!-- HTML GOES HERE -->
             </main>

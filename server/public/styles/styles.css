@@ -6,7 +6,22 @@ body, html{
     font-family: 'Bree Serif', serif;
 }
 
-form, h1, h2, #nav {
+.md-menu-toolbar, #nav {
+    background-color : rgb(79, 124, 145);
+    color: aliceblue;
+    text-align: left; 
+    margin-top: 0;
+    font-weight: normal;
+
+
+     margin: 0;
+     padding: 0;
+     height: 100%;
+     font-family: 'Bree Serif',
+     serif;
+}
+
+form, h1, h2, {
     text-align: center;
 }
 
@@ -19,7 +34,7 @@ table, tr{
 }
 
 th{
-    background-color: rgb(90, 156, 131);
+    background-color:rgb(79, 124, 145);
     text-align: center;
     width: 75%;
     margin: 0 auto;
@@ -32,9 +47,8 @@ tr:nth-child(even) {
     margin: 0 auto;
 }
 
-.boxes {
-     width: 100%;
-     margin: 0 auto;
+tr:nth-child(odd) {
+    background-color: rgb(127, 243, 199);
 }
 
 .pet{

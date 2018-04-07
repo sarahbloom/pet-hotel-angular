@@ -11,13 +11,11 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', '$mdDialog', funct
     self.petArray = serviceOwner.petArray;
 
     self.addOwner = serviceOwner.addOwner;
-    // self.removeOwner = serviceOwner.deleteOwner;
     self.getOwner = serviceOwner.getOwner;
     self.updateOwner = serviceOwner.updateOwner;
 
     self.removeOwner = function (ev, owner) { 
-        console.log('owner data', owner);
-        
+        console.log('owner data', owner); 
         if (owner.total_pets > 0) {
             $mdDialog.show(
                 $mdDialog.alert()
