@@ -62,18 +62,17 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
         })
     }
 
-    self.updateOwner = function (owner, ownerId){
-        console.log('clicked UPDATE /owner');
-        // $http({
-        //     method:"PUT", 
-        //     url: `/owner/${ownerId}`,
-        //     data: owner
-        // }).then((response) =>{
-        //     console.log('UPDATE /owner', response);
-        //     self.getCrew();
-        // }).catch((err)=>{
-        //     console.log('err UPDATING /owner', err);
-        // })
+    self.updateOwner = function (OwnerInfo, ownerId){
+        $http({
+            method:"PUT", 
+            url: `/owner/${ownerId}`,
+            data: OwnerInfo
+        }).then((response) =>{
+            console.log('UPDATE /owner', response);
+            self.getOwner();
+        }).catch((err)=>{
+            console.log('err UPDATING /owner', err);
+        })
     }
 
     //add a new pet

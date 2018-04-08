@@ -36,9 +36,8 @@ router.delete('/:id', (req, res)=>{
 
 //add new owner to DB
 router.post('/', (req, res) => {
-    console.log('POST received in /owner');
+    console.log('POST received in /owner', req.body);
     const newOwner = req.body;
-    // console.log('New Owner is:', newOwner);
     let queryText = `INSERT INTO "owner"("first_name", "email") VALUES($1, $2);`;
     pool.query(queryText, [newOwner.name, newOwner.email])
     .then((result) => {
@@ -48,6 +47,21 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+
+router.put('/:id', (req, res) => {
+    console.log('PUT /owner. req.body:', req.body, 'req.params',req.params);
+    const Owner = req.body;
+    const queryText = `UPDATE "owner" SET "first_name" = $1, "email" = $2 WHERE "id" = $3;`;
+    pool.query(queryText, [Owner.name, Owner.email, req.params.id])
+        .then((response) => {
+            console.log('successin UPDATING /owner');
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error making UPDATE in /crew', error);
+            res.sendStatus(500);
+        })
+});
 
 module.exports = router;
 
