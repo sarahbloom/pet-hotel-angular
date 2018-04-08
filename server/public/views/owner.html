@@ -6,23 +6,28 @@
     <input type="text" placeholder="Email" ng-model="vm.NewOwner.email">
     <input type="submit">
     <input type="reset">
-
 </form>
 <br>
 <div>
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Total Pets</th>
+            <th>
+                <a href="" ng-click="orderByField='owner_name'; reverseSort = !reverseSort">Name</a>
+            </th>
+            <th>
+                <a href="" ng-click="orderByField='email'; reverseSort = !reverseSort">Email</a>
+            </th>
+            <th>
+                <a href="" ng-click="orderByField='total_pets'; reverseSort = !reverseSort">Total Pets</a>
+            </th>
                 <th>Delete</th>
                 <th>Update Info</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr ng-repeat="owner in vm.ownerArray.list">
+            <tr ng-repeat="owner in vm.ownerArray.list | orderBy:orderByField:reverseSort">
                 <td>{{owner.owner_name}}</td>
                 <td>{{owner.email}}</td>
                 <td>{{owner.total_pets}}</td>
