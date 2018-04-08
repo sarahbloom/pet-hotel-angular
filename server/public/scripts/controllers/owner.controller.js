@@ -13,14 +13,14 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', '$mdDialog', funct
 
     self.addOwner = function (Owner) {
         if (self.editing) {
-            // call a PUT route
+            // call the PUT /owner route
             serviceOwner.updateOwner(Owner, self.editingId);
             self.editing = false;
-        } else {
+        } else { //add new owner
             serviceOwner.addOwner(Owner);
         }
-        self.ownerToUpdate = { name: '', email: '', owner_id: '' };
-        console.log('self.editing', self.editing);
+        self.ownerToUpdate = { name:'', email:'', owner_id:''};
+        console.log('ownerToUpdate', self.ownerToUpdate);
     };
 
     
@@ -48,6 +48,5 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', '$mdDialog', funct
         self.editingId = Owner.owner_id;
         self.ownerToUpdate.name = Owner.owner_name;
         self.ownerToUpdate.email = Owner.email;
-        self.ownerToUpdate.owner_id = Owner.owner_id;
     };
 }])

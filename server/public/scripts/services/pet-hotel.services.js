@@ -16,7 +16,6 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
             url:'/owner',
             data: NewOwner
         }).then((response)=>{
-            console.log('POST /owner response', response);
             self.getOwner();
         }).catch((err) => {
             console.log('error making POST /pet request', err);
@@ -30,7 +29,6 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
                 method:"DELETE", 
                 url: `/owner/${ownerId}`
             }).then((response) => {
-                console.log(response);
                 self.getPet();
                 self.getOwner();
                 $mdDialog.show(
@@ -68,7 +66,6 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
             url: `/owner/${ownerId}`,
             data: OwnerInfo
         }).then((response) =>{
-            console.log('UPDATE /owner', response);
             self.getOwner();
         }).catch((err)=>{
             console.log('err UPDATING /owner', err);
@@ -100,12 +97,11 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
             data: pet,
             params: { status: status}
         }).then((response) => {
-            console.log(pet);
+            // console.log(pet);
             self.getPet();
             self.getOwner();
         }).catch((err) =>{
             console.log('error in checking in', err);
-            // alert('Error in checking in pet!')
             $mdDialog.show(
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
@@ -119,7 +115,6 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
 
     //delete request /PET
     self.deletePet = function(ev, petId){
-        console.log('clicked DELETE /pet');
 
         let confirm = $mdDialog.confirm()
             .title('Would you like to remove this pet from the records?')
