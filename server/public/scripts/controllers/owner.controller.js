@@ -21,8 +21,9 @@ PetHotelApp.controller('OwnerController', ['PetHotelService', '$mdDialog', funct
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
                     .clickOutsideToClose(true)
-                    .title(`This person still has pets on the system`)
-                    .ok('Got it!')
+                    .title(`This person still has pets on the system.`)
+                    .textContent(`Please remove all pets before deleting the owner.`)
+                    .ok('OK')
                     .targetEvent(ev));
         } else {
             PetHotelService.deleteOwner(ev, owner.owner_id);
