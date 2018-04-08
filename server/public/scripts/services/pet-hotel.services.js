@@ -143,8 +143,7 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
                                 .parent(angular.element(document.querySelector('#popupContainer')))
                                 .clickOutsideToClose(true)
                                 .title('You have deleted the pet from the records.')
-                                // .ariaLabel('Pet is deleted.')
-                                .ok('Got it!')
+                                .ok('OK')
                                 .targetEvent(ev)
                         );
                 }).catch((err) => {
