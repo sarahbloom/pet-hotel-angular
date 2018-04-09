@@ -10,7 +10,6 @@ This application uses SQL, AngularJS, node.js and node.js, and AngularJS Materia
 
 Prerequisites
  * node.js
- * node.js
 
  Setup
 
