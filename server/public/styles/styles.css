@@ -46,12 +46,15 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: rgb(127, 243, 199);
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .pet{
     height: 350px;
     width: 200px;
-    margin: 15px;
+    margin: 15px auto;
     text-align: center;
     background-color : rgb(109, 172, 201)
 }
