@@ -60,6 +60,7 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
         })
     }
 
+    //update /OWNER information
     self.updateOwner = function (OwnerInfo, ownerId){
         $http({
             method:"PUT", 
@@ -162,7 +163,7 @@ PetHotelApp.service('PetHotelService', ['$http', '$mdDialog', function ($http, $
             console.log('err GETTING /pet', err);
         })
     }
-
+    
     self.getPet();
     self.getOwner();
 

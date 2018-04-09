@@ -1,7 +1,8 @@
 <h2>List of Owners</h2>
-<h3 ng-show="!vm.editing">Add New Owner</h3>
-<h3 ng-show="vm.editing">Editing {{vm.ownerToUpdate.name}}'s Information</h3>
+
 <form ng-submit="vm.addOwner(vm.NewOwner)">
+    <h3 ng-show="!vm.editing">Add New Owner:</h3>
+    <h3 ng-show="vm.editing">Editing {{vm.ownerToUpdate.name}}'s Information:</h3>
     <input type="text" placeholder="Name" ng-model="vm.NewOwner.name">
     <input type="text" placeholder="Email" ng-model="vm.NewOwner.email">
     <input type="submit">

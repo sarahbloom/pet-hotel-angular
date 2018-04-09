@@ -10,6 +10,7 @@
         <option ng-repeat="owner in vm.ownerArray.list" value="{{owner.owner_id}}">{{owner.owner_name}}</option>
     </select>
     <input type="submit">
+    <input type="reset">
 </form>
 
 <br>
@@ -20,12 +21,10 @@
         <p>Breed: {{pet.pet_breed}}</p>
         <p>Owner: {{pet.owner_name}}</p>
         <p ng-show="pet.checked_in" type="datetime-local">Checked In: {{pet.date | date: 'MMM dd, yyyy'}}</p>
-        <br>
         <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkIn', $event)" ng-show="!pet.checked_in" 
                 class="md-raised md-primary">Check In</md-button>
         <md-button ng-click="vm.checkInPet(pet, pet.id, 'checkOut', $event)" ng-show="pet.checked_in" 
                 class="md-raised md-primary">Check Out</md-button>
-        <br>
         <md-button ng-click="vm.deletePet($event, pet.id)" class="md-raised md-warn">Delete</md-button>
     </div>
 </div>
