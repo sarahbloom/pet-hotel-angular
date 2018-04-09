@@ -1,16 +1,20 @@
 body, html{
     background-color: rgb(127, 243, 199);
+    /* background-image: url("http://dioji.com/images/home-fader-1.jpg"); */
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Bree Serif', serif;
 }
 
-.md-menu-toolbar, #nav {
-    background-color: rgb(79, 124, 145);
-    color: aliceblue;
+.md-menu-toolbar{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ2ed2PGk_K269NnqpSMK5G8mkVXujppLV77Nf2Go-Cy5HtLim");
+    
+}
+
+#nav {
+    /* background-color: rgb(79, 124, 145); */
     text-align: left; 
-    margin-top: 0;
     font-weight: normal;
     margin: 0;
     padding: 0;
@@ -18,7 +22,12 @@ body, html{
     font-family: 'Bree Serif', serif;
 }
 
-form, h1, h2, th{
+h1{
+    text-align: left;
+    color: rgb(252, 232, 232);
+}
+
+form, h2, th{
     text-align: center;
 }
 
