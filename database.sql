@@ -9,8 +9,6 @@ CREATE TABLE "pet" (
 	"owner_id" INTEGER FOREIGN KEY REFERENCES "owner"("id")
 );
 
-!!!! make sure this owner_id is a foreign key !!!!
-
 CREATE TABLE "owner" (
 	"id" SERIAL PRIMARY KEY,
 	"first_name" VARCHAR(25),
